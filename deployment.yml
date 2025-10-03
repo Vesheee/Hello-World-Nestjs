@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nest-hello-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nest-hello
+  template:
+    metadata:
+      labels:
+        app: nest-hello
+    spec:
+      containers:
+        - name: nest-hello
+          image: nest-hello:latest
+          imagePullPolicy: Never # importante p/ usar imagem local
+          ports:
+            - containerPort: 3000
